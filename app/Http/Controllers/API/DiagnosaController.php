@@ -7,6 +7,7 @@ use App\Models\{Gejala, Penyakit, Rule, Riwayat};
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DiagnosaController extends Controller
 {
@@ -176,6 +177,7 @@ class DiagnosaController extends Controller
     {
 
         try {
+            $name = 'Guest';
             $data = $request->all();
             
             $result = $this->kalkulasi_cf($data);
@@ -185,27 +187,27 @@ class DiagnosaController extends Controller
             }
     
             $riwayat = Riwayat::create([
-                'nama' => $name,
+                'user_id' => Auth::user()->id,
                 'hasil_diagnosa' => serialize($result['hasil_diagnosa']),
                 'cf_max' => serialize($result['cf_max']),
                 'gejala_terpilih' => serialize($result['gejala_terpilih']),
-               
             ]);
     
-            $path = public_path('storage/downloads');
+            // $path = public_path('storage/downloads');
     
-            if(!File::isDirectory($path)){
-                File::makeDirectory($path, 0777, true, true);
-            }
+            // if(!File::isDirectory($path)){
+            //     File::makeDirectory($path, 0777, true, true);
+            // }
     
-            $file_pdf = 'Diagnosa-'.$name.'-'.time().'.pdf';
+            // $file_pdf = 'Diagnosa-'.$name.'-'.time().'.pdf';
     
-            PDF::loadView('pdf.riwayat', ['id' => $riwayat->id])
-                ->save($path."/".$file_pdf);
+            // PDF::loadView('pdf.riwayat', ['id' => $riwayat->id])
+            //     ->save($path."/".$file_pdf);
     
-            $riwayat->update(['file_pdf' => $file_pdf]);
+            // $riwayat->update(['file_pdf' => $file_pdf]);
     
-            return response()->json(['riwayat_id' => $riwayat->id, 'file_pdf' => $file_pdf], 200);
+            return response()->json(["Berhasil"]);
+            // return response()->json(['riwayat_id' => $riwayat->id, 'file_pdf' => $file_pdf], 200);
     
         } catch (\Exception $e) {
             return response()->json(['message' => 'Server Error', 'error' => $e->getMessage()], 500);
