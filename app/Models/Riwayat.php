@@ -9,16 +9,17 @@ class Riwayat extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama',
-        'hasil_diagnosa',
-        'cf_max',
-        'gejala_terpilih',
-        'file_pdf',
-        'user_id',
-        'created_at',
-        'updated_at'
-    ];
+    protected $guarded = [''];
+    // protected $fillable = [
+      
+    //     'hasil_diagnosa',
+    //     'cf_max',
+    //     'gejala_terpilih',
+    //     'file_pdf',
+    //     'user_id',
+    //     'created_at',
+    //     'updated_at'
+    // ];
 
     public function penyakit()
     {
@@ -27,6 +28,6 @@ class Riwayat extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 }

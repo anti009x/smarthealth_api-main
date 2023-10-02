@@ -72,4 +72,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Rating::class, 'user_id');
     }
+
+    public function riwayats()
+    {
+        return $this->hasMany(Riwayat::class,'user_id');
+    }
 }

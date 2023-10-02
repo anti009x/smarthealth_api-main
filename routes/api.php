@@ -70,7 +70,6 @@ use Illuminate\Http\Request;
 
 // Diagnosa routes
 Route::get('/diagnosa', [DiagnosaController::class, 'index']);
-Route::post('diagnosa', [DiagnosaController::class, 'diagnosa']);
 
 
 
@@ -119,6 +118,7 @@ Route::prefix("akun")->group(function () {
 
 Route::middleware("auth:sanctum")->group(function () {
 
+    Route::post('diagnosa', [DiagnosaController::class, 'diagnosa']);
     Route::get("/midtrans/get_token/{id_keranjang}", [TokenController::class, "get_token"]);
 
     Route::get("/plotting", [PlottingResepProdukController::class, "index"]);
