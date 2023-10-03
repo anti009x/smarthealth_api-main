@@ -68,29 +68,6 @@ use Illuminate\Http\Request;
 
 
 
-// Diagnosa routes
-Route::get('/diagnosa', [DiagnosaController::class, 'index']);
-
-
-
-// Gejala routes
-Route::get('gejala', [GejalaController::class, 'index']);
-Route::post('gejala', [GejalaController::class, 'store']);
-Route::get('gejala/{gejala}', [GejalaController::class, 'show']);
-Route::put('gejala/{gejala}', [GejalaController::class, 'update']);
-Route::delete('gejala/{gejala}', [GejalaController::class, 'destroy']);
-
-
-// Penyakit routes
-    Route::get('penyakit', [PenyakitController::class, 'index']);
-    Route::post('penyakit', [PenyakitController::class, 'store']);
-    Route::get('penyakit/{penyakit}', [PenyakitController::class, 'show']);
-    Route::put('penyakit/{penyakit}', [PenyakitController::class, 'update']);
-    Route::delete('penyakit/{penyakit}', [PenyakitController::class, 'destroy']);
-
-// Riwayat routes
-    Route::get('riwayat', [RiwayatController::class, 'index']);
-    Route::get('riwayat/{riwayat}', [RiwayatController::class, 'show']);
 
 
 
@@ -119,6 +96,30 @@ Route::prefix("akun")->group(function () {
 Route::middleware("auth:sanctum")->group(function () {
 
     Route::post('diagnosa', [DiagnosaController::class, 'diagnosa']);
+    // Diagnosa routes
+Route::get('/diagnosa', [DiagnosaController::class, 'index']);
+
+
+
+// Gejala routes
+Route::get('gejala', [GejalaController::class, 'index']);
+Route::post('gejala', [GejalaController::class, 'store']);
+Route::get('gejala/{gejala}', [GejalaController::class, 'show']);
+Route::put('gejala/{gejala}', [GejalaController::class, 'update']);
+Route::delete('gejala/{gejala}', [GejalaController::class, 'destroy']);
+
+
+// Penyakit routes
+    Route::get('penyakit', [PenyakitController::class, 'index']);
+    Route::post('penyakit', [PenyakitController::class, 'store']);
+    Route::get('penyakit/{penyakit}', [PenyakitController::class, 'show']);
+    Route::put('penyakit/{penyakit}', [PenyakitController::class, 'update']);
+    Route::delete('penyakit/{penyakit}', [PenyakitController::class, 'destroy']);
+
+// Riwayat routes
+    Route::get('riwayat', [RiwayatController::class, 'index']);
+    Route::get('riwayat/{riwayat}', [RiwayatController::class, 'show']);
+
     Route::get("/midtrans/get_token/{id_keranjang}", [TokenController::class, "get_token"]);
 
     Route::get("/plotting", [PlottingResepProdukController::class, "index"]);
