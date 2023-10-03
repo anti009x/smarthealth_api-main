@@ -10,16 +10,16 @@ class Riwayat extends Model
     use HasFactory;
 
     protected $guarded = [''];
-    // protected $fillable = [
+    protected $fillable = [
       
-    //     'hasil_diagnosa',
-    //     'cf_max',
-    //     'gejala_terpilih',
-    //     'file_pdf',
-    //     'user_id',
-    //     'created_at',
-    //     'updated_at'
-    // ];
+        'hasil_diagnosa',
+        'cf_max',
+        'gejala_terpilih',
+        'file_pdf',
+        'user_id',
+        'created_at',
+        'updated_at'
+    ];
 
     public function penyakit()
     {

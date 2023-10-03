@@ -177,7 +177,7 @@ class DiagnosaController extends Controller
     {
 
         try {
-            $name = 'Guest';
+             $nama = '';
             $data = $request->all();
             
             $result = $this->kalkulasi_cf($data);
@@ -187,6 +187,7 @@ class DiagnosaController extends Controller
             }
     
             $riwayat = Riwayat::create([
+                // 'nama' => $nama,
                 'user_id' => Auth::user()->id,
                 'hasil_diagnosa' => serialize($result['hasil_diagnosa']),
                 'cf_max' => serialize($result['cf_max']),
