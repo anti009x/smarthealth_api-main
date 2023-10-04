@@ -177,7 +177,7 @@ class DiagnosaController extends Controller
     {
 
         try {
-             $nama = '';
+            //  $nama = '';
             $data = $request->all();
             
             $result = $this->kalkulasi_cf($data);
