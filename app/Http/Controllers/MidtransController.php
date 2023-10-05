@@ -81,7 +81,7 @@ class MidtransController extends Controller
                     ]
                 );
 
-            $charge = 
+            $charge = 0;
             } catch (\Throwable $th) {
                 
             }
