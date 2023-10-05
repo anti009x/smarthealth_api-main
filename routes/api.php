@@ -6,6 +6,8 @@ use App\Http\Controllers\API\GejalaController;
 use App\Http\Controllers\API\PenyakitController;
 use App\Http\Controllers\API\RiwayatController;
 
+use App\Http\Controllers\API\Diagnosa\DiagnosaStrokeController;
+
 
 use App\Http\Controllers\API\Akun\AllAccountController;
 use App\Http\Controllers\API\Akun\ChangePasswordController;
@@ -76,6 +78,8 @@ use Illuminate\Http\Request;
 // Route::get("/send-message", [ChatingController::class, "handle"]);
 
 Route::post("/notification", [NotificationController::class, "post"]);
+
+Route::post("/send-stroke-face", [DiagnosaStrokeController::class, "sendFile"]);
 
 Route::get("/qr/{code}", [DashboardController::class, "qr"]);
 Route::post("/tes_ongkir", [RajaOngkirController::class, "index"]);
