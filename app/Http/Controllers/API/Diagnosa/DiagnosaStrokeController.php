@@ -33,9 +33,10 @@ class DiagnosaStrokeController extends Controller
         // dd($response);
         // return response()->json(['response' => json_encode($response)], 200);
 
+        unlink($tmpFilePath);
         if ($response['httpCode'] == 200) {
             // hapus kalo udh berhasil keupload ke server
-            Storage::delete($tmpFilePath);
+            // Storage::delete($tmpFilePath);
 
             return response()->json(['response' => $response['response']], 200);
         } else {
