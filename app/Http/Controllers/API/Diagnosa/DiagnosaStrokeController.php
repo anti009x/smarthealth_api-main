@@ -22,7 +22,7 @@ class DiagnosaStrokeController extends Controller
             return response()->json(['error' => "Sorry, there was an error uploading your file."], 400);
         }
 
-        $remoteUrl = 'http://127.0.0.1:8080/diagnosa-stroke'; //url api server
+        $remoteUrl = 'http://192.168.239.116:20213/diagnosa-stroke'; //url api server
         $postData = [
             'file' => new \CURLFile($tmpFilePath, $file->getClientMimeType(), $file->getClientOriginalName()),
         ];
